@@ -52,7 +52,7 @@ import ZustandExample from '@/pages/lectures/lecture29/ZustandExample';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="mx-auto max-w-7xl px-4">
         <Header />
         <main className="py-8">

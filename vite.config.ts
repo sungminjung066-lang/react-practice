@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/react-lecture-10/',
   resolve: {
     alias: {
       // '@/app': path.resolve('./src/app'),
