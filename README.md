@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# React Study Project (React 스터디 예제)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 React를 처음 공부하는 교육생들을 돕기 위해 작성된 예제 코드 모음입니다.  
+React의 기초부터 React Router, React Query, Tailwind CSS 등 실무에서 자주 사용되는 기술 스택을 활용한 다양한 예제를 포함하고 있습니다.
 
-Currently, two official plugins are available:
+## 🛠️ 기술 스택 (Tech Stack)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Core**: React 19, TypeScript, Vite
+- **State Management & Data Fetching**: React Query 5 (TanStack Query)
+- **Routing**: React Router 7
+- **Styling**: Tailwind CSS 4
+- **Form Handling**: React Hook Form
 
-## React Compiler
+## 📂 프로젝트 구조 (Project Structure)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+`src/pages` 디렉토리 내에 각 강의별 예제 코드가 정리되어 있습니다.
 
-## Expanding the ESLint configuration
+- **Lectures (강의 예제)**: `src/pages/lectures`
+  - `lecture01` ~ `lecture28`: React 기초부터 심화 내용까지 단계별로 구성되어 있습니다.
+- **Exercises (실습)**: 일부 강의 폴더에는 `*-exercise` 형태의 실습용 폴더가 포함되어 있어 직접 코드를 작성해보며 학습할 수 있습니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 시작하기 (Getting Started)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+프로젝트를 로컬 환경에서 실행하려면 다음 명령어를 순서대로 입력하세요.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. 패키지 설치 (Install Dependencies)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. 개발 서버 실행 (Run Dev Server)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+서버가 실행되면 터미널에 표시된 로컬 주소(예: `http://localhost:5173`)로 접속하여 예제를 확인할 수 있습니다.
+
+## 📝 라이센스 (License)
+
+This project is for educational purposes.
