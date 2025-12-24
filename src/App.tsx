@@ -48,6 +48,7 @@ import MutationExample from '@/pages/lectures/lecture28/MutationExample';
 import OptimisticUpdateExample from '@/pages/lectures/lecture28/OptimisticUpdateExample';
 import PaginationExample from '@/pages/lectures/lecture28/PaginationExample';
 import QueryKeysExample from '@/pages/lectures/lecture28/QueryKeysExample';
+import ZustandExample from '@/pages/lectures/lecture29/ZustandExample';
 
 function App() {
   return (
@@ -98,6 +99,7 @@ function App() {
             <Route path="/lecture/28-3" element={<PaginationExample />} />
             <Route path="/lecture/28-4" element={<QueryKeysExample />} />
             <Route path="/lecture/28-5" element={<OptimisticUpdateExample />} />
+            <Route path="/lecture/29" element={<ZustandExample />} />
             <Route path="/lecture/3-exercise/exercise01" element={<Exercise01 />} />
             <Route path="/lecture/9-exercise/exercise02" element={<Exercise02 />} />
             <Route path="/lecture/15-exercise/exercise03" element={<Exercise03 />} />

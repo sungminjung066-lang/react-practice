@@ -280,6 +280,12 @@ const lectures = [
     path: '/lecture/28-5',
     category: '[부록] 28. TanStack Query: 서버 상태 관리',
   },
+  {
+    id: '29',
+    title: 'Zustand: 상태 관리 라이브러리',
+    path: '/lecture/29',
+    category: '[부록] 29. Zustand: 상태 관리 라이브러리',
+  },
 ];
 
 // 카테고리별로 강의 그룹화
