@@ -3,6 +3,10 @@
 이 프로젝트는 React를 처음 공부하는 교육생들을 돕기 위해 작성된 예제 코드 모음입니다.  
 React의 기초부터 React Router, React Query, Tailwind CSS 등 실무에서 자주 사용되는 기술 스택을 활용한 다양한 예제를 포함하고 있습니다.
 
+## � 배포 페이지 (Deployment)
+
+[https://elle510.github.io/react-lecture-10/](https://elle510.github.io/react-lecture-10/)
+
 ## 🛠️ 기술 스택 (Tech Stack)
 
 - **Core**: React 19, TypeScript, Vite
