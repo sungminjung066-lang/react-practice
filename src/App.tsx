@@ -36,7 +36,7 @@ import CustomHookExample from '@/pages/lectures/lecture22/CustomHookExample';
 import LifecycleExample from '@/pages/lectures/lecture23/LifecycleExample';
 import HookFlowExample from '@/pages/lectures/lecture24/HookFlowExample';
 import CompositionExample from '@/pages/lectures/lecture25/CompositionExample';
-import Exercise05 from '@/pages/lectures/lecture26-exercise/exercise05-solution/ShoppingApp';
+import Exercise05 from '@/pages/lectures/lecture26-exercise/exercise05/ShoppingApp';
 import UseEffectExample2 from '@/pages/lectures/lecture26/UseEffectExample';
 import BasicFormExample from '@/pages/lectures/lecture27/BasicFormExample';
 import ComplexFormExample from '@/pages/lectures/lecture27/ComplexFormExample';
