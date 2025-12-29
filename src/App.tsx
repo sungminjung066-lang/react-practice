@@ -38,17 +38,21 @@ import HookFlowExample from '@/pages/lectures/lecture24/HookFlowExample';
 import CompositionExample from '@/pages/lectures/lecture25/CompositionExample';
 import Exercise05 from '@/pages/lectures/lecture26-exercise/exercise05/ShoppingApp';
 import UseEffectExample2 from '@/pages/lectures/lecture26/UseEffectExample';
-import BasicFormExample from '@/pages/lectures/lecture27/BasicFormExample';
-import ComplexFormExample from '@/pages/lectures/lecture27/ComplexFormExample';
-import DynamicFieldsExample from '@/pages/lectures/lecture27/DynamicFieldsExample';
-import ValidationExample from '@/pages/lectures/lecture27/ValidationExample';
-import WatchExample from '@/pages/lectures/lecture27/WatchExample';
-import BasicQueryExample from '@/pages/lectures/lecture28/BasicQueryExample';
-import MutationExample from '@/pages/lectures/lecture28/MutationExample';
-import OptimisticUpdateExample from '@/pages/lectures/lecture28/OptimisticUpdateExample';
-import PaginationExample from '@/pages/lectures/lecture28/PaginationExample';
-import QueryKeysExample from '@/pages/lectures/lecture28/QueryKeysExample';
-import ZustandExample from '@/pages/lectures/lecture29/ZustandExample';
+import AxiosExample from '@/pages/lectures/lecture27/AxiosExample';
+import ConfigExample from '@/pages/lectures/lecture27/ConfigExample';
+import ErrorHandlingExample from '@/pages/lectures/lecture27/ErrorHandlingExample';
+import InterceptorsExample from '@/pages/lectures/lecture27/InterceptorsExample';
+import BasicFormExample from '@/pages/lectures/lecture28/BasicFormExample';
+import ComplexFormExample from '@/pages/lectures/lecture28/ComplexFormExample';
+import DynamicFieldsExample from '@/pages/lectures/lecture28/DynamicFieldsExample';
+import ValidationExample from '@/pages/lectures/lecture28/ValidationExample';
+import WatchExample from '@/pages/lectures/lecture28/WatchExample';
+import BasicQueryExample from '@/pages/lectures/lecture29/BasicQueryExample';
+import MutationExample from '@/pages/lectures/lecture29/MutationExample';
+import OptimisticUpdateExample from '@/pages/lectures/lecture29/OptimisticUpdateExample';
+import PaginationExample from '@/pages/lectures/lecture29/PaginationExample';
+import QueryKeysExample from '@/pages/lectures/lecture29/QueryKeysExample';
+import ZustandExample from '@/pages/lectures/lecture30/ZustandExample';
 
 function App() {
   return (
@@ -89,17 +93,21 @@ function App() {
             <Route path="/lecture/24" element={<HookFlowExample />} />
             <Route path="/lecture/25" element={<CompositionExample />} />
             <Route path="/lecture/26" element={<UseEffectExample2 />} />
-            <Route path="/lecture/27-1" element={<BasicFormExample />} />
-            <Route path="/lecture/27-2" element={<ValidationExample />} />
-            <Route path="/lecture/27-3" element={<WatchExample />} />
-            <Route path="/lecture/27-4" element={<DynamicFieldsExample />} />
-            <Route path="/lecture/27-5" element={<ComplexFormExample />} />
-            <Route path="/lecture/28-1" element={<BasicQueryExample />} />
-            <Route path="/lecture/28-2" element={<MutationExample />} />
-            <Route path="/lecture/28-3" element={<PaginationExample />} />
-            <Route path="/lecture/28-4" element={<QueryKeysExample />} />
-            <Route path="/lecture/28-5" element={<OptimisticUpdateExample />} />
-            <Route path="/lecture/29" element={<ZustandExample />} />
+            <Route path="/lecture/27-1" element={<AxiosExample />} />
+            <Route path="/lecture/27-2" element={<InterceptorsExample />} />
+            <Route path="/lecture/27-3" element={<ErrorHandlingExample />} />
+            <Route path="/lecture/27-4" element={<ConfigExample />} />
+            <Route path="/lecture/28-1" element={<BasicFormExample />} />
+            <Route path="/lecture/28-2" element={<ValidationExample />} />
+            <Route path="/lecture/28-3" element={<WatchExample />} />
+            <Route path="/lecture/28-4" element={<DynamicFieldsExample />} />
+            <Route path="/lecture/28-5" element={<ComplexFormExample />} />
+            <Route path="/lecture/29-1" element={<BasicQueryExample />} />
+            <Route path="/lecture/29-2" element={<MutationExample />} />
+            <Route path="/lecture/29-3" element={<PaginationExample />} />
+            <Route path="/lecture/29-4" element={<QueryKeysExample />} />
+            <Route path="/lecture/29-5" element={<OptimisticUpdateExample />} />
+            <Route path="/lecture/30" element={<ZustandExample />} />
             <Route path="/lecture/3-exercise/exercise01" element={<Exercise01 />} />
             <Route path="/lecture/9-exercise/exercise02" element={<Exercise02 />} />
             <Route path="/lecture/15-exercise/exercise03" element={<Exercise03 />} />

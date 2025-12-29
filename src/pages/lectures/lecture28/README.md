@@ -1,211 +1,123 @@
-# Lecture 28: TanStack Query (React Query)
+# Lecture 27: React Hook Form
 
 ## 📚 학습 목표
 
-TanStack Query는 React 애플리케이션에서 서버 상태를 관리하기 위한 강력한 라이브러리입니다.
+React Hook Form은 React에서 폼을 쉽고 효율적으로 관리할 수 있는 라이브러리입니다.
 
-### TanStack Query의 장점
+### React Hook Form의 장점
 
-1. **자동 캐싱**: 데이터를 자동으로 캐싱하여 성능 향상
-2. **백그라운드 업데이트**: 백그라운드에서 자동으로 데이터 갱신
-3. **중복 제거**: 동일한 요청을 자동으로 중복 제거
-4. **Optimistic Updates**: 낙관적 업데이트로 UX 향상
-5. **Pagination & Infinite Scroll**: 페이지네이션과 무한 스크롤 내장 지원
-6. **DevTools**: 강력한 개발자 도구
+1. **성능 최적화**: 불필요한 리렌더링 최소화
+2. **간단한 사용법**: 적은 코드로 복잡한 폼 관리
+3. **유연한 Validation**: 다양한 검증 규칙 지원
+4. **작은 번들 사이즈**: 경량 라이브러리
+5. **TypeScript 지원**: 완벽한 타입 안정성
 
 ## 📖 주요 개념
 
-### 1. Client State vs Server State
-
-#### Client State (클라이언트 상태)
-- 앱 내부에서만 관리되는 상태
-- 예: 모달 열림/닫힘, 폼 입력값, 테마 설정
-- 관리: useState, useReducer, Context API
-
-#### Server State (서버 상태)
-- 서버에서 가져오는 데이터
-- 예: 사용자 목록, 게시글, 댓글
-- 특징: 비동기, 공유, 캐싱 필요
-- 관리: **TanStack Query** ✨
-
-### 2. useQuery Hook
-
-데이터를 가져올 때 사용합니다.
+### 1. useForm Hook
 
 ```typescript
-const { data, isLoading, error, refetch } = useQuery({
-  queryKey: ['todos'],
-  queryFn: fetchTodos,
-});
+const { register, handleSubmit, formState: { errors } } = useForm();
 ```
 
-**주요 속성:**
-- `queryKey`: 쿼리를 식별하는 고유 키 (배열 형태)
-- `queryFn`: 데이터를 가져오는 함수 (Promise 반환)
-- `data`: 가져온 데이터
-- `isLoading`: 로딩 상태
-- `error`: 에러 정보
-- `refetch`: 수동으로 데이터 다시 가져오기
+- `register`: 입력 필드를 등록
+- `handleSubmit`: 폼 제출 핸들러
+- `formState`: 폼 상태 (errors, isSubmitting, isDirty 등)
+- `watch`: 특정 필드 값 감시
+- `setValue`: 필드 값 설정
+- `reset`: 폼 초기화
 
-### 3. useMutation Hook
-
-데이터를 생성/수정/삭제할 때 사용합니다.
+### 2. register 사용법
 
 ```typescript
-const mutation = useMutation({
-  mutationFn: createTodo,
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['todos'] });
-  },
-});
-
-mutation.mutate({ title: 'New Todo' });
+<input {...register("name")} />
+<input {...register("email", { required: true })} />
 ```
 
-**주요 속성:**
-- `mutationFn`: 실행할 함수
-- `mutate`: mutation 실행
-- `onSuccess`: 성공 시 콜백
-- `onError`: 실패 시 콜백
-
-### 4. Query Keys
-
-쿼리를 식별하고 캐싱하는데 사용됩니다.
+### 3. Validation 옵션
 
 ```typescript
-// 단순 키
-['todos']
-
-// 파라미터가 있는 키
-['todos', { status: 'active' }]
-['todo', 1]
-
-// 계층 구조
-['todos', 'list', { page: 1 }]
-```
-
-### 5. Query Invalidation
-
-캐시를 무효화하여 데이터를 다시 가져옵니다.
-
-```typescript
-// 특정 쿼리 무효화
-queryClient.invalidateQueries({ queryKey: ['todos'] });
-
-// 모든 todos 관련 쿼리 무효화
-queryClient.invalidateQueries({ queryKey: ['todos'] });
-```
-
-## 🔧 설정 방법
-
-### 1. QueryClient 생성 및 Provider 설정
-
-```typescript
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000, // 1분
-      refetchOnWindowFocus: false,
-    },
-  },
-});
-
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <YourApp />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  );
+{
+  required: "필수 항목입니다",
+  minLength: { value: 3, message: "최소 3자 이상" },
+  maxLength: { value: 20, message: "최대 20자 이하" },
+  pattern: { value: /regex/, message: "형식이 올바르지 않습니다" },
+  validate: (value) => value !== "admin" || "사용할 수 없는 이름입니다"
 }
 ```
 
-### 2. 주요 옵션
-
-- `staleTime`: 데이터가 신선한(fresh) 상태로 유지되는 시간
-- `cacheTime`: 캐시에 데이터가 유지되는 시간 (기본 5분)
-- `refetchOnWindowFocus`: 윈도우 포커스 시 자동 refetch
-- `refetchOnReconnect`: 네트워크 재연결 시 자동 refetch
-- `retry`: 실패 시 재시도 횟수
-
 ## 📂 예제 파일 구성
 
-1. **BasicQueryExample.tsx** - 기본 useQuery 사용법
-2. **MutationExample.tsx** - CRUD 작업 (Create, Update, Delete)
-3. **PaginationExample.tsx** - 페이지네이션
-4. **QueryKeysExample.tsx** - Query Keys와 캐싱 관리
-5. **OptimisticUpdateExample.tsx** - 낙관적 업데이트
-
-## 💡 useState vs TanStack Query
-
-### useState를 사용한 데이터 페칭
-
-```typescript
-const [data, setData] = React.useState(null);
-const [loading, setLoading] = React.useState(true);
-const [error, setError] = React.useState(null);
-
-React.useEffect(() => {
-  setLoading(true);
-  fetch('/api/todos')
-    .then(res => res.json())
-    .then(data => {
-      setData(data);
-      setLoading(false);
-    })
-    .catch(err => {
-      setError(err);
-      setLoading(false);
-    });
-}, []);
-```
-
-**문제점:**
-- 캐싱 없음 (새로고침하면 다시 로딩)
-- 백그라운드 업데이트 없음
-- 중복 요청 제거 없음
-- 보일러플레이트 코드가 많음
-
-### TanStack Query 사용
-
-```typescript
-const { data, isLoading, error } = useQuery({
-  queryKey: ['todos'],
-  queryFn: fetchTodos,
-});
-```
-
-**장점:**
-- 자동 캐싱
-- 백그라운드 업데이트
-- 중복 요청 자동 제거
-- 간결한 코드
-- 로딩/에러 상태 자동 관리
-
-## 🎯 실습 순서
-
-1. BasicQueryExample.tsx - 기본 데이터 페칭 학습
-2. MutationExample.tsx - 데이터 변경 작업 학습
-3. PaginationExample.tsx - 페이지네이션 구현
-4. QueryKeysExample.tsx - 쿼리 키와 캐싱 이해
-5. OptimisticUpdateExample.tsx - 낙관적 업데이트로 UX 개선
+1. **BasicFormExample.tsx** - 기본 사용법
+2. **ValidationExample.tsx** - 유효성 검사
+3. **WatchExample.tsx** - 값 감시 및 조건부 필드
+4. **DynamicFieldsExample.tsx** - 동적 필드 추가/제거
+5. **ComplexFormExample.tsx** - 종합 예제 (회원가입)
 
 ## 🔗 공식 문서
 
-https://tanstack.com/query/latest
+https://react-hook-form.com/
 
-## ⚡ 성능 최적화 팁
+## 💡 기존 방식 vs React Hook Form
 
-1. **적절한 queryKey 설계**: 세밀한 캐시 관리
-2. **staleTime 설정**: 불필요한 refetch 방지
-3. **select 옵션**: 필요한 데이터만 선택
-4. **enabled 옵션**: 조건부 쿼리 실행
-5. **Prefetching**: 미리 데이터 로드
+### 기존 방식 (useState)
+
+```typescript
+const [name, setName] = React.useState('');
+const [email, setEmail] = React.useState('');
+const [errors, setErrors] = React.useState({});
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // 수동 검증
+  if (!name) setErrors(prev => ({ ...prev, name: '필수' }));
+  if (!email) setErrors(prev => ({ ...prev, email: '필수' }));
+  // ...
+};
+
+// 각 입력마다 onChange 핸들러 필요
+<input value={name} onChange={(e) => setName(e.target.value)} />
+<input value={email} onChange={(e) => setEmail(e.target.value)} />
+```
+
+**문제점:**
+- 입력할 때마다 컴포넌트 리렌더링
+- 보일러플레이트 코드가 많음
+- 검증 로직을 직접 작성해야 함
+
+### React Hook Form 방식
+
+```typescript
+const { register, handleSubmit, formState: { errors } } = useForm();
+
+const onSubmit = (data) => {
+  console.log(data);
+};
+
+<form onSubmit={handleSubmit(onSubmit)}>
+  <input {...register("name", { required: "필수 항목입니다" })} />
+  {errors.name && <span>{errors.name.message}</span>}
+  
+  <input {...register("email", { required: "필수 항목입니다" })} />
+  {errors.email && <span>{errors.email.message}</span>}
+</form>
+```
+
+**장점:**
+- 입력 시 리렌더링 없음 (Uncontrolled Component 사용)
+- 간결한 코드
+- 자동 검증
+- 성능 최적화
+
+## 🎯 실습 순서
+
+1. BasicFormExample.tsx 실행 및 코드 분석
+2. ValidationExample.tsx로 검증 규칙 학습
+3. WatchExample.tsx로 값 감시 방법 학습
+4. DynamicFieldsExample.tsx로 동적 필드 추가 학습
+5. ComplexFormExample.tsx로 실전 폼 구현 연습
 
 ---
 
-**TanStack Query를 마스터하면 서버 상태 관리가 훨씬 쉬워집니다! 🚀**
+**react-hook-form을 마스터하면 폼 개발 시간이 크게 단축됩니다! 🚀**
 
