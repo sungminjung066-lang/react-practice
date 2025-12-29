@@ -34,22 +34,22 @@ function InterceptorsExample() {
           addLog(`✅ Request Interceptor: ${config.method?.toUpperCase()} ${config.url}`);
           // 실제 사용 예: 인증 토큰 추가
           // config.headers.Authorization = `Bearer ${token}`;
-          
+
           // 실제 사용 예: API 키 추가
           // config.headers['X-API-Key'] = process.env.REACT_APP_API_KEY;
-          
+
           // 실제 사용 예: 로딩 상태 시작
           // store.dispatch(setLoading(true));
-          
+
           // 실제 사용 예: 타임스탬프 추가
           // config.headers['X-Request-Time'] = new Date().toISOString();
-          
+
           // 실제 사용 예: 언어 설정 추가
           // config.headers['Accept-Language'] = i18n.language;
-          
+
           // 실제 사용 예: CSRF 토큰 추가
           // config.headers['X-CSRF-Token'] = getCsrfToken();
-          
+
           config.headers['X-Custom-Header'] = 'InterceptorExample';
         }
         return config;
@@ -67,27 +67,27 @@ function InterceptorsExample() {
         if (isInterceptorActive) {
           addLog(`✅ Response Interceptor: Status ${response.status} from ${response.config.url}`);
         }
-        
+
         // 실제 사용 예: 로딩 상태 종료
         // store.dispatch(setLoading(false));
-        
+
         // 실제 사용 예: 응답 데이터 변환 (snake_case -> camelCase)
         // response.data = transformKeysToCamelCase(response.data);
-        
+
         // 실제 사용 예: 응답 캐싱
         // cache.set(response.config.url, response.data, expiresIn);
-        
+
         // 실제 사용 예: 성공 로그 기록
         // logger.info('API Success', { url: response.config.url, status: response.status });
-        
+
         // 실제 사용 예: 분석/모니터링 데이터 전송
         // analytics.track('api_request_success', { endpoint: response.config.url });
-        
+
         // 실제 사용 예: 토스트 메시지 (특정 API만)
         // if (response.config.url?.includes('/save')) {
         //   toast.success('저장되었습니다');
         // }
-        
+
         return response;
       },
       (error) => {
@@ -96,18 +96,18 @@ function InterceptorsExample() {
         // if (error.response?.status === 401) {
         //   window.location.href = '/login';
         // }
-        
+
         // 실제 사용 예: 403 에러 시 권한 없음 페이지로 이동
         // if (error.response?.status === 403) {
         //   navigate('/access-denied');
         // }
-        
+
         // 실제 사용 예: 토스트 메시지로 에러 표시
         // toast.error(error.response?.data?.message || '요청 실패');
-        
+
         // 실제 사용 예: 에러 로깅 서비스로 전송 (Sentry 등)
         // logger.error('API Error', { url: error.config?.url, status: error.response?.status });
-        
+
         // 실제 사용 예: 토큰 만료 시 자동 갱신 후 재시도
         // if (error.response?.status === 401 && !error.config._retry) {
         //   error.config._retry = true;
@@ -115,7 +115,7 @@ function InterceptorsExample() {
         //   error.config.headers.Authorization = `Bearer ${newToken}`;
         //   return axios(error.config);
         // }
-        
+
         // 실제 사용 예: 로딩 상태 종료
         // store.dispatch(setLoading(false));
         return Promise.reject(error);
