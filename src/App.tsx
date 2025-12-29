@@ -52,6 +52,9 @@ import MutationExample from '@/pages/lectures/lecture29/MutationExample';
 import OptimisticUpdateExample from '@/pages/lectures/lecture29/OptimisticUpdateExample';
 import PaginationExample from '@/pages/lectures/lecture29/PaginationExample';
 import QueryKeysExample from '@/pages/lectures/lecture29/QueryKeysExample';
+import TanstackAxiosBasicExample from '@/pages/lectures/lecture29/TanstackAxiosBasicExample';
+import TanstackAxiosErrorExample from '@/pages/lectures/lecture29/TanstackAxiosErrorExample';
+import TanstackAxiosMutationExample from '@/pages/lectures/lecture29/TanstackAxiosMutationExample';
 import ZustandExample from '@/pages/lectures/lecture30/ZustandExample';
 
 function App() {
@@ -107,6 +110,9 @@ function App() {
             <Route path="/lecture/29-3" element={<PaginationExample />} />
             <Route path="/lecture/29-4" element={<QueryKeysExample />} />
             <Route path="/lecture/29-5" element={<OptimisticUpdateExample />} />
+            <Route path="/lecture/29-6" element={<TanstackAxiosBasicExample />} />
+            <Route path="/lecture/29-7" element={<TanstackAxiosMutationExample />} />
+            <Route path="/lecture/29-8" element={<TanstackAxiosErrorExample />} />
             <Route path="/lecture/30" element={<ZustandExample />} />
             <Route path="/lecture/3-exercise/exercise01" element={<Exercise01 />} />
             <Route path="/lecture/9-exercise/exercise02" element={<Exercise02 />} />

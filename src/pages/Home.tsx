@@ -305,6 +305,24 @@ const lectures = [
     category: '[부록] 29. TanStack Query: 서버 상태 관리',
   },
   {
+    id: '29-6',
+    title: 'TanStack Query - Axios 통합 기본 예제',
+    path: '/lecture/29-6',
+    category: '[부록] 29. TanStack Query: 서버 상태 관리',
+  },
+  {
+    id: '29-7',
+    title: 'TanStack Query - Axios 통합 Mutation 예제',
+    path: '/lecture/29-7',
+    category: '[부록] 29. TanStack Query: 서버 상태 관리',
+  },
+  {
+    id: '29-8',
+    title: 'TanStack Query - Axios 통합 Error 예제',
+    path: '/lecture/29-8',
+    category: '[부록] 29. TanStack Query: 서버 상태 관리',
+  },
+  {
     id: '30',
     title: 'Zustand: 상태 관리 라이브러리',
     path: '/lecture/30',
